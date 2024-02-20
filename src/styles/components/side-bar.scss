@@ -1,0 +1,32 @@
+.side-bar-container{
+  position: fixed;
+  .side-bar-left{
+    top: 0;
+    width: 80px;
+    min-height: 100vh;
+    border-right: 3px solid;
+    .tab-container{
+      padding-top: 100px;
+    }
+    .tab{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      padding: 2px 0;
+      margin-bottom: 20px;
+      width: 100%;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+      svg{
+        font-size: 35px;
+      }
+      .active-border{
+        position: absolute;
+        right: -3px;
+        width: 3px;
+        height: 100%;
+      }
+    }
+  }
+}
