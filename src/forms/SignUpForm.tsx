@@ -1,6 +1,7 @@
 import {Darkmode} from "../utils/colors";
+import {Link} from "react-router-dom";
 
-const SignForm = () => {
+const SignUpForm = () => {
     return(
         <div className="sign-form">
             <div className="sign-form-title">
@@ -9,7 +10,7 @@ const SignForm = () => {
             </div>
             <form>
                 <div>
-                    <label style={{color: Darkmode.secondary}}>User name</label>
+                    <label style={{color: Darkmode.secondary}}>User Name</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
                            name="username"
                            type="text"
@@ -20,7 +21,7 @@ const SignForm = () => {
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
                            name="mail"
                            type="text"
-                           placeholder="Walter@hotmail.com"/>
+                           placeholder="walter@hotmail.com"/>
                 </div>
                 <div>
                     <label style={{color: Darkmode.secondary}}>Password</label>
@@ -38,11 +39,11 @@ const SignForm = () => {
                 </div>
                 <div>
                     <span style={{color: Darkmode.secondary}}>Already have an account?</span>
-                    <span style={{color: Darkmode.fourth}}> Log in</span>
+                    <Link to="/sign/"><span style={{color: Darkmode.fourth}}> Log in</span></Link>
                 </div>
             </div>
         </div>
     )
 }
 
-export default SignForm;
+export default SignUpForm;

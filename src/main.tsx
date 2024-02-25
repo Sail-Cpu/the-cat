@@ -5,14 +5,26 @@ import './styles/styles.scss';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 //pages
 import Sign from "./pages/Sign";
+import SignInForm from "./forms/SignInForm";
+import SignUpForm from "./forms/SignUpForm";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
     },{
-        path: "/login",
-        element: <Sign />
+        path: "sign/",
+        element: <Sign />,
+        children: [
+            {
+                path: "",
+                element: <SignInForm />
+            },
+            {
+                path: "signup",
+                element: <SignUpForm />
+            }
+        ]
     }
 ]);
 
