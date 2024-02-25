@@ -33,7 +33,7 @@ const itemVariants: Variants = {
             type: "spring",
             bounce: 0,
             duration: 0.2
-        }
+        },
     },
     hidden: {
         opacity: 1,
@@ -42,7 +42,7 @@ const itemVariants: Variants = {
             type: "spring",
             bounce: 0,
             duration: 0.2
-        }
+        },
     }
 }
 
