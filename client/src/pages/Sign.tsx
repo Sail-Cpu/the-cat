@@ -1,4 +1,3 @@
-import SignUpForm from "../forms/SignUpForm";
 import {Darkmode} from "../utils/colors";
 import {Outlet} from "react-router-dom";
 const Sign = () => {

@@ -12,7 +12,8 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
-    },{
+    },
+    {
         path: "sign/",
         element: <Sign />,
         children: [
