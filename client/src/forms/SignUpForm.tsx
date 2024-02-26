@@ -1,14 +1,49 @@
-import {Darkmode} from "../utils/colors";
+import {FormEvent, useEffect} from "react";
 import {Link} from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux";
+//utils
+import {Darkmode} from "../utils/colors";
+//redux
+import {register} from "../redux/auth/Action";
+import {AuthAction} from "../redux/Interfaces";
+import {Dispatch} from "redux";
 
 const SignUpForm = () => {
+    const {isLoggedIn, message} = useSelector((state) => state.auth);
+
+    const dispatch: Dispatch<AuthAction> = useDispatch();
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const username = formData.get("username");
+        const email = formData.get("email");
+        const password = formData.get("password");
+
+        if (typeof username === 'string' && typeof email === 'string' && typeof password === 'string') {
+            await dispatch(register({
+                username: username,
+                email: email,
+                password: password
+            }));
+        }else{
+            console.log("des valeur sont manquante");
+        }
+    }
+
+    useEffect(() => {
+        if(isLoggedIn) console.log(isLoggedIn);
+        if(message) {
+            console.log(message);
+        }
+    }, [isLoggedIn, message])
+
     return(
         <div className="sign-form">
             <div className="sign-form-title">
                 <span>Welcome to,</span>
                 <span style={{color: Darkmode.fourth}}>The Cats</span>
             </div>
-            <form>
+            <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
                 <div>
                     <label style={{color: Darkmode.secondary}}>User Name</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
@@ -19,14 +54,14 @@ const SignUpForm = () => {
                 <div>
                     <label style={{color: Darkmode.secondary}}>Email</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
-                           name="mail"
+                           name="email"
                            type="text"
                            placeholder="walter@hotmail.com"/>
                 </div>
                 <div>
                     <label style={{color: Darkmode.secondary}}>Password</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
-                           name="mail"
+                           name="password"
                            type="password" />
                 </div>
                 <button type="submit">Sign In</button>

@@ -64,8 +64,6 @@ router.post(`/signup`, async (req: Request, res: Response) => {
 router.post(`/signin`, async (req: Request, res: Response) => {
     const { nameEmail, password } = req.body;
 
-    console.log(nameEmail, password)
-
     if(nameEmail && password){
         try{
             const userExist = await prisma.users.findMany({
@@ -77,7 +75,6 @@ router.post(`/signin`, async (req: Request, res: Response) => {
                 }
             })
             if(userExist.length == 0) return res.status(400).send({message: "The users does not exist"});
-            console.log(userExist[0].password);
             bcrypt.compare(password, userExist[0].password, (err: Error | undefined, isTheSame: boolean) => {
                 if(err) throw err;
                 if(isTheSame) return res.status(200).send({data: userExist});

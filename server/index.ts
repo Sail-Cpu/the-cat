@@ -2,12 +2,15 @@
 import express, { Response, Request } from "express";
 // @ts-ignore
 import bodyParser from "body-parser";
+// @ts-ignore
+import cors from "cors";
 
 //router
 import userRouter from "./router/users/router";
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
