@@ -1,25 +1,57 @@
-import {Darkmode} from "../utils/colors";
+import {FormEvent, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+//utils
+import {Darkmode} from "../utils/colors";
+//redux
+import { login } from "../redux/auth/Action";
+
 
 const SignInForm = () => {
+    const dispatch = useDispatch();
+    const {isLoggedIn, message} = useSelector((state) => state.auth);
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const nameEmail = formData.get("nameEmail");
+        const password = formData.get("password");
+
+        if (typeof nameEmail === 'string' && typeof password === 'string') {
+            await dispatch(login({
+                nameEmail: nameEmail,
+                password: password
+            }));
+        }else{
+            console.log("des valeur sont manquante");
+        }
+    }
+
+    useEffect(() => {
+        if(isLoggedIn) console.log(isLoggedIn);
+        if(message){
+            console.log(message)
+        }
+    }, [isLoggedIn, message])
+
     return(
         <div className="sign-form">
             <div className="sign-form-title">
                 <span>Login to </span>
                 <span style={{color: Darkmode.fourth}}>The Cats</span>
             </div>
-            <form>
+            <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
                 <div>
                     <label style={{color: Darkmode.secondary}}>User Name / Email</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
-                           name="username"
+                           name="nameEmail"
                            type="text"
                            placeholder="Walter"/>
                 </div>
                 <div>
                     <label style={{color: Darkmode.secondary}}>Password</label>
                     <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
-                           name="mail"
+                           name="password"
                            type="password" />
                 </div>
                 <button type="submit">Sign In</button>
