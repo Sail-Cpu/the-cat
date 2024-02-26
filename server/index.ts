@@ -14,5 +14,5 @@ app.use(express.json());
 app.use(userRouter);
 
 app.listen(3000, () => {
-    console.log("Perfect");
+    console.log("The server is running on port 3000.");
 })
