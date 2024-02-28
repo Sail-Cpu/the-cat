@@ -1,6 +1,6 @@
 import {FormEvent, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 //utils
 import {Darkmode} from "../utils/colors";
 //redux
@@ -10,6 +10,7 @@ import { login } from "../redux/auth/Action";
 const SignInForm = () => {
     const dispatch = useDispatch();
     const {isLoggedIn, message} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -22,17 +23,18 @@ const SignInForm = () => {
                 nameEmail: nameEmail,
                 password: password
             }));
+            navigate('/');
         }else{
             console.log("des valeur sont manquante");
         }
     }
 
     useEffect(() => {
-        if(isLoggedIn) console.log(isLoggedIn);
+        if(isLoggedIn) console.log("ok");
         if(message){
             console.log(message)
         }
-    }, [isLoggedIn, message])
+    }, [isLoggedIn, message, navigate])
 
     return(
         <div className="sign-form">
