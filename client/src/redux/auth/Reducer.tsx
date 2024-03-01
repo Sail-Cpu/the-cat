@@ -19,7 +19,7 @@ const authReducer = (state: AuthState = INITIAL_STATE, action: AuthAction) => {
                 message: action.message
             }
         default:
-            return INITIAL_STATE
+            return state
     }
 }
 

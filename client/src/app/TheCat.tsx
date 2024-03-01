@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
 import SignInForm from "../forms/SignInForm";
 import Sign from "../pages/Sign";
 import SignUpForm from "../forms/SignUpForm";
+import {State} from "../redux/Interfaces";
 
 const isLoggedRouter = createBrowserRouter([
     {
@@ -30,15 +31,10 @@ const notLoggedRouter = createBrowserRouter([
 ]);
 
 const TheCat = () => {
-    const { isLoggedIn } = useSelector((state) => state.auth);
+    const { isLoggedIn } = useSelector((state: State) => state.auth);
 
     return (
-        <RouterProvider router={isLoggedIn ? isLoggedRouter : notLoggedRouter}>
-            <Route
-                path="/"
-                element={isLoggedIn && <App/>}
-            />
-        </RouterProvider>
+        <RouterProvider router={isLoggedIn ? isLoggedRouter : notLoggedRouter} />
     );
 }
 

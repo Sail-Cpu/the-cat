@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import * as TypeAction from "./Type";
-import {AuthAction, User} from "../Interfaces";
+import {User} from "../Interfaces";
 
 const BASE_LINK = `http://localhost:3000`;
 
@@ -18,7 +18,6 @@ export const register = (userData: User) => async (dispatch:  Dispatch) => {
                type: TypeAction.REGISTER_SUCCESS,
                payload: request.data.data
            })
-            window.sessionStorage.setItem("auth", request.data.data)
         }
     }catch (error) {
         dispatch({
@@ -36,7 +35,6 @@ export const login = (userData: User) => async (dispatch: Dispatch) => {
             nameEmail,
             password
         })
-
         if(request.data.data){
             const auth_state = {
                 user: request.data.data[0],
