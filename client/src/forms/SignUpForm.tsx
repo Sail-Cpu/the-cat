@@ -1,5 +1,5 @@
 import {FormEvent, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 //utils
 import {Darkmode} from "../utils/colors";
@@ -10,6 +10,7 @@ import {Dispatch} from "redux";
 
 const SignUpForm = () => {
     const {isLoggedIn, message} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
 
     const dispatch: Dispatch<AuthAction> = useDispatch();
     const handleSubmit = async (e: FormEvent) => {
@@ -31,7 +32,7 @@ const SignUpForm = () => {
     }
 
     useEffect(() => {
-        if(isLoggedIn) console.log(isLoggedIn);
+        if(isLoggedIn) navigate('/');
         if(message) {
             console.log(message);
         }

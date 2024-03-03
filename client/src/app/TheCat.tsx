@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, Navigate, Route, BrowserRouter, RouterProvider, Routes} from "react-router-dom";
 import App from "../App";
 import SignInForm from "../forms/SignInForm";
 import Sign from "../pages/Sign";
@@ -15,7 +15,7 @@ const isLoggedRouter = createBrowserRouter([
 
 const notLoggedRouter = createBrowserRouter([
     {
-        path: "/",
+        path: "/sign",
         element: <Sign />,
         children: [
             {
@@ -34,7 +34,15 @@ const TheCat = () => {
     const { isLoggedIn } = useSelector((state: State) => state.auth);
 
     return (
-        <RouterProvider router={isLoggedIn ? isLoggedRouter : notLoggedRouter} />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/sign/" element={<Sign />} >
+                    <Route path="/sign/" element={<SignInForm />} />
+                    <Route path="/sign/signup" element={<SignUpForm />} />
+                </Route>
+                <Route path="/" element={isLoggedIn ? <App /> : <Navigate to="/sign" />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 

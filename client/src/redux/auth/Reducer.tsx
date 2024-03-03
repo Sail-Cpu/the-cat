@@ -1,7 +1,7 @@
 import * as ActionType from "./Type";
 import {AuthAction, AuthState} from "../Interfaces";
 
-const INITIAL_STATE = {
+const INITIAL_STATE : AuthState= {
     user: {},
     isLoggedIn: false
 }

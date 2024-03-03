@@ -21,7 +21,7 @@ export interface AuthAction {
 
 
 export interface State {
-    auth: AuthState
+    auth?: AuthState
 }
 
 
@@ -37,7 +37,8 @@ export interface AppState {
     apps: App[];
 }
 
+
 export interface AppsAction {
     type: string,
-    payload?: App[] | App
+    payload?: App | App[]
 }

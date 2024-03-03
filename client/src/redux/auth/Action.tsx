@@ -19,11 +19,15 @@ export const register = (userData: User) => async (dispatch:  Dispatch) => {
                payload: request.data.data
            })
         }
-    }catch (error) {
-        dispatch({
-            type: TypeAction.REGISTER_FAILED,
-            message: error.response.data.message
-        });
+    }catch (error: unknown) {
+        if (axios.isAxiosError(error)) {
+            dispatch({
+                type: TypeAction.REGISTER_FAILED,
+                message: error.response?.data?.message
+            });
+        } else {
+            console.error("Unexpected error:", error);
+        }
     }
 }
 
@@ -47,9 +51,14 @@ export const login = (userData: User) => async (dispatch: Dispatch) => {
             })
         }
     }catch (error) {
-        dispatch({
-            type: TypeAction.REGISTER_FAILED,
-            message: error.response.data.message
-        });
+        if (axios.isAxiosError(error)) {
+            dispatch({
+                type: TypeAction.REGISTER_FAILED,
+                message: error.response?.data?.message
+            });
+        } else {
+            console.error("Unexpected error:", error);
+        }
     }
+    return undefined;
 }
