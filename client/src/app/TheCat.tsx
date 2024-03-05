@@ -6,30 +6,6 @@ import Sign from "../pages/Sign";
 import SignUpForm from "../forms/SignUpForm";
 import {State} from "../redux/Interfaces";
 
-const isLoggedRouter = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />
-    }
-]);
-
-const notLoggedRouter = createBrowserRouter([
-    {
-        path: "/sign",
-        element: <Sign />,
-        children: [
-            {
-                path: "",
-                element: <SignInForm />
-            },
-            {
-                path: "signup",
-                element: <SignUpForm />
-            }
-        ]
-    }
-]);
-
 const TheCat = () => {
     const { isLoggedIn } = useSelector((state: State) => state.auth);
 
