@@ -21,7 +21,7 @@ export interface AuthAction {
 
 
 export interface State {
-    auth?: AuthState
+    auth: AuthState
 }
 
 

@@ -2,7 +2,7 @@ import {FormEvent, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 //utils
-import {Darkmode} from "../utils/colors";
+import {LightMode} from "../utils/colors";
 //redux
 import {register} from "../redux/auth/Action";
 import {AuthAction} from "../redux/Interfaces";
@@ -42,40 +42,40 @@ const SignUpForm = () => {
         <div className="sign-form">
             <div className="sign-form-title">
                 <span>Welcome to,</span>
-                <span style={{color: Darkmode.fourth}}>The Cats</span>
+                <span style={{color: LightMode.fourth}}>The Cats</span>
             </div>
             <form onSubmit={(e: FormEvent) => handleSubmit(e)}>
                 <div>
-                    <label style={{color: Darkmode.secondary}}>User Name</label>
-                    <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
+                    <label style={{color: LightMode.border}}>User Name</label>
+                    <input style={{borderColor: LightMode.third ,backgroundColor: LightMode.primary}}
                            name="username"
                            type="text"
                            placeholder="Walter"/>
                 </div>
                 <div>
-                    <label style={{color: Darkmode.secondary}}>Email</label>
-                    <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
+                    <label style={{color: LightMode.border}}>Email</label>
+                    <input style={{borderColor: LightMode.third ,backgroundColor: LightMode.primary}}
                            name="email"
                            type="text"
                            placeholder="walter@hotmail.com"/>
                 </div>
                 <div>
-                    <label style={{color: Darkmode.secondary}}>Password</label>
-                    <input style={{borderColor: Darkmode.third ,backgroundColor: Darkmode.primary}}
+                    <label style={{color: LightMode.border}}>Password</label>
+                    <input style={{borderColor: LightMode.third ,backgroundColor: LightMode.primary}}
                            name="password"
                            type="password" />
                 </div>
                 <button type="submit">Sign In</button>
             </form>
-            <div className="sign-form-footer" style={{borderColor: Darkmode.secondary}}>
-                <span style={{color: Darkmode.secondary}}>or sign in with:</span>
+            <div className="sign-form-footer" style={{borderColor: LightMode.border}}>
+                <span style={{color: LightMode.border}}>or sign in with:</span>
                 <div className="other-sign-pos">
-                    <button style={{borderColor: Darkmode.third, backgroundColor: Darkmode.primary}}></button>
-                    <button style={{borderColor: Darkmode.third, backgroundColor: Darkmode.primary}}></button>
+                    <button style={{borderColor: LightMode.third, backgroundColor: LightMode.primary}}></button>
+                    <button style={{borderColor: LightMode.third, backgroundColor: LightMode.primary}}></button>
                 </div>
                 <div>
-                    <span style={{color: Darkmode.secondary}}>Already have an account?</span>
-                    <Link to="/sign/"><span style={{color: Darkmode.fourth}}> Log in</span></Link>
+                    <span style={{color: LightMode.border}}>Already have an account?</span>
+                    <Link to="/sign/"><span style={{color: LightMode.fourth}}> Log in</span></Link>
                 </div>
             </div>
         </div>

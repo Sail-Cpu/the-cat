@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import {createBrowserRouter, Navigate, Route, BrowserRouter, RouterProvider, Routes} from "react-router-dom";
+import { Navigate, Route, BrowserRouter, Routes } from "react-router-dom";
 import App from "../App";
 import SignInForm from "../forms/SignInForm";
 import Sign from "../pages/Sign";
 import SignUpForm from "../forms/SignUpForm";
-import {State} from "../redux/Interfaces";
+import { State } from "../redux/Interfaces";
 
 const TheCat = () => {
     const { isLoggedIn } = useSelector((state: State) => state.auth);

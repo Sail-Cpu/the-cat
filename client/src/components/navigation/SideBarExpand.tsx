@@ -1,9 +1,9 @@
-import {Darkmode} from "../../utils/colors";
+import { LightMode } from "../../utils/colors";
 
 const SideBarExpand = () => {
     return(
-        <div className="side-bar-expand" style={{borderColor: Darkmode.secondary, color: Darkmode.third}}>
-            <div className="search" style={{backgroundColor: Darkmode.secondary}}></div>
+        <div className="side-bar-expand" style={{borderColor: LightMode.border, color: LightMode.third}}>
+            <div className="search" style={{backgroundColor: LightMode.border}}></div>
         </div>
     )
 }

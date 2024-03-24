@@ -5,10 +5,8 @@ import storage from "redux-persist/lib/storage";
 import { reducer as AuthReducer } from "./auth";
 import { reducer as AppsReducer } from "./apps";
 import {list} from "./apps/Action";
-import {Reducer} from "react";
-import {AppsAction, AppState, AuthAction, AuthState} from "./Interfaces";
 
-const rootReducer: Reducer<{ auth: AuthState | undefined; apps: AppState | undefined; }, AuthAction | AppsAction> = combineReducers({
+const rootReducer = combineReducers({
     auth: AuthReducer,
     apps: AppsReducer
 });

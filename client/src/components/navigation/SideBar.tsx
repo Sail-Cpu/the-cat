@@ -1,7 +1,7 @@
 import {ReactNode, useState} from "react";
 import {motion, Variants} from "framer-motion"
 //Utils
-import { Darkmode } from "../../utils/colors";
+import { LightMode } from "../../utils/colors";
 //Icons
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
@@ -52,14 +52,14 @@ const SideBar = () => {
 
     return(
         <div className="side-bar-container">
-            <div className="side-bar-left" style={{backgroundColor: Darkmode.primary, borderColor: Darkmode.secondary}}>
+            <div className="side-bar-left" style={{backgroundColor: LightMode.primary, borderColor: LightMode.border}}>
                 <div className="tab-container">
                     {
                         tabs.map((tab: tab, idx: number) => {
                             return(
-                                <div key={idx} className="tab" style={{color: active != tab ? Darkmode.third : Darkmode.fourth}} onClick={() => setActive(tab)}>
+                                <div key={idx} className="tab" style={{color: active != tab ? LightMode.third : LightMode.fourth}} onClick={() => setActive(tab)}>
                                     {tab.icon}
-                                    {active == tab && <div className="active-border" style={{backgroundColor: Darkmode.fourth}}></div>}
+                                    {active == tab && <div className="active-border" style={{backgroundColor: LightMode.fourth}}></div>}
                                 </div>
                             )
                         })
